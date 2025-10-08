@@ -15,7 +15,7 @@ public class StudentGradeCalculator {
 
     public static void main(String[] args) {
         String name;
-        int numSubjects;
+        int numSubjects = 0;
                 
         //User Input
         Scanner input = new Scanner(System.in);
@@ -24,8 +24,23 @@ public class StudentGradeCalculator {
         name = input.nextLine();
         
         System.out.println("Please enter the number of subjects being done: ");
-        numSubjects = input.nextInt();
-        
+        //Exception handling for nomber of subjects input
+        boolean valid = false;
+        do{
+            try{
+                numSubjects = input.nextInt();
+                if(numSubjects > 0){
+                    valid = true;
+                } else{
+                    System.out.println("Please enter a number greater than zero");
+                }
+                
+            }catch(InputMismatchException e){
+                System.out.println("Invalid Input. Enter a valid number");
+                input.nextLine();
+            }
+        }while(!valid);
+       
         //Create Student Object
         Student myStudent = new Student(name, numSubjects);
         
