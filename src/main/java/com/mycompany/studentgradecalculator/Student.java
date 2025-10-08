@@ -14,8 +14,9 @@ public class Student {
     private String name;
     private char grade;
 
-    public Student(String name) {
+    public Student(String name, int numberOfSubjects) {
         this.name = name;
+        this.marks = new int[numberOfSubjects];
     }
 
     public void setMarks(int[] marks) {
@@ -61,6 +62,20 @@ public class Student {
 
     public char getGrade() {
         return grade;
+    }
+    
+    public void getDetails(){
+        //Display the marks entered
+        System.out.println("Scores entered are: " );
+        for (int mark : marks){
+            System.out.println(mark);
+        }
+             
+        //User Output
+        System.out.println("\n Your Results " );
+        System.out.println("Student: " + getName());
+        System.out.println("Average score: " + getAverage());
+        System.out.println("Grade: " + getGrade());
     }
     
     

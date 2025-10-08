@@ -15,19 +15,23 @@ public class StudentGradeCalculator {
 
     public static void main(String[] args) {
         String name;
-        int marks[] = new int[5];
-        
+        int numSubjects;
+                
         //User Input
         Scanner input = new Scanner(System.in);
         
         System.out.println("Please enter your name: ");
         name = input.nextLine();
         
+        System.out.println("Please enter the number of subjects being done: ");
+        numSubjects = input.nextInt();
+        
         //Create Student Object
-        Student myStudent = new Student(name);
+        Student myStudent = new Student(name, numSubjects);
         
+        int marks[] = new int[numSubjects];
         
-        for (int i = 0; i < marks.length; i++ ){
+        for (int i = 0; i < numSubjects; i++ ){
             boolean okay = false;
             while(!okay){
                 System.out.println("Enter mark for subject "+ (i + 1) + ": " + "\n ");
@@ -48,17 +52,7 @@ public class StudentGradeCalculator {
         //set the marks of the student
         myStudent.setMarks(marks);
         
-        //Display the marks entered
-        System.out.println("Scores enterd are: " );
-        for (int mark : marks){
-            System.out.println(mark);
-        }
-        //myStudent.getMarks();
-             
-        //User Output
-        System.out.println("\n Your Results " );
-        System.out.println("Student: " + myStudent.getName());
-        System.out.println("Average score: " + myStudent.getAverage());
-        System.out.println("Grade: " + myStudent.getGrade());
+        //Display resukts
+        myStudent.getDetails();       
     }
 }
